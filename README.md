@@ -5,7 +5,7 @@ This Julia package contains my solutions for [Advent of Code 2020](https://adven
 ## Overview
 
 | Day | Problem | Time | Allocated memory | Source |
-|----:|:-------:|-----:|-----------------:|:-----------------:|:------:|
+|----:|:-------:|-----:|-----------------:|:------:|
 | 1 |  [:white_check_mark:](https://adventofcode.com/2020/day/1) | 35.712 μs | 17.25 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day01/day01.jl) |
 
 The benchmarks have been measured on this machine:
