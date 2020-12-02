@@ -10,9 +10,7 @@ end
 function part1(values::Array{Int,1})
     for (i, vi) in enumerate(values)
         for vj in Iterators.rest(values, i + 1)
-            if vi + vj == 2020
-                return vi * vj
-            end
+            vi + vj == 2020 && return vi * vj
         end
     end
 end
@@ -20,13 +18,9 @@ end
 function part2(values::Array{Int,1})
     for (i, vi) in enumerate(values)
         for (j, vj) in enumerate(Iterators.rest(values, i + 1))
-            if vi + vj > 2020
-                continue
-            end
+            vi + vj > 2020 && continue
             for vk in Iterators.rest(values, i + j + 1)
-                if vi + vj + vk == 2020
-                    return vi * vj * vk
-                end
+                vi + vj + vk == 2020 && return vi * vj * vk
             end
         end
     end
