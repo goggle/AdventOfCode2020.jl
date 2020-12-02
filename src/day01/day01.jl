@@ -18,9 +18,10 @@ end
 function part2(values::Array{Int,1})
     for (i, vi) in enumerate(values)
         for (j, vj) in enumerate(Iterators.rest(values, i + 1))
-            vi + vj > 2020 && continue
+            sum = vi + vj
+            sum > 2020 && continue
             for vk in Iterators.rest(values, i + j + 1)
-                vi + vj + vk == 2020 && return vi * vj * vk
+                sum + vk == 2020 && return vi * vj * vk
             end
         end
     end
