@@ -11,7 +11,7 @@ function day02(input::String = readInput(joinpath(@__DIR__, "input.txt")))
         high = parse(Int, m.captures[2])
         char = m.captures[3][1]
         pw = m.captures[4]
-        if low <= (c == char for c in pw) |> sum <= high
+        if low <= count(c->c==char, pw) <= high
             part1 += 1
         end
         if xor(pw[low] == char, pw[high] == char)
