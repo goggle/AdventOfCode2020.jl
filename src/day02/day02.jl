@@ -6,9 +6,7 @@ function day02(input::String = readInput(joinpath(@__DIR__, "input.txt")))
     part1, part2 = 0, 0
     for line in split(input, "\n")
         m = match(r"(\d+)-(\d+)\s+(.):\s+(.+)", line)
-        if m == nothing
-            break
-        end
+        m == nothing && break
         low = parse(Int, m.captures[1])
         high = parse(Int, m.captures[2])
         char = m.captures[3][1]
