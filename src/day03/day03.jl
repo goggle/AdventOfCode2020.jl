@@ -44,11 +44,7 @@ end
 
 function part2(treemap::Matrix{Bool})
     slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
-    result = 1
-    for (right, down) in slopes
-        result *= check_slopes(treemap, right, down)
-    end
-    return result
+    return (check_slopes(treemap, right, down) for (right, down) in slopes) |> prod
 end
 
 end # module
