@@ -84,3 +84,11 @@ end
 
     @test AdventOfCode2020.Day04.day04() == [202, 137]
 end
+
+@testset "Day 5" begin
+    @test AdventOfCode2020.Day05.get_seat_id("FBFBBFFRLR") == 357
+    @test AdventOfCode2020.Day05.get_seat_id("BFFFBBFRRR") == 567
+    @test AdventOfCode2020.Day05.get_seat_id("FFFBBBFRRR") == 119
+    @test AdventOfCode2020.Day05.get_seat_id("BBFFBBFRLL") == 820
+    @test AdventOfCode2020.Day05.day05() == [806, 562]
+end

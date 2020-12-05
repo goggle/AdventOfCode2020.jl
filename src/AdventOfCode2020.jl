@@ -3,7 +3,7 @@ module AdventOfCode2020
 using BenchmarkTools
 using Printf
 
-const solvedDays = 1:4
+const solvedDays = 1:5
 
 # include(joinpath(@__DIR__, "intcode.jl"))
 for day in solvedDays
