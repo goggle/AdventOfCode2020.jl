@@ -92,3 +92,23 @@ end
     @test AdventOfCode2020.Day05.get_seat_id("BBFFBBFRLL") == 820
     @test AdventOfCode2020.Day05.day05() == [806, 562]
 end
+
+@testset "Day 6" begin
+    sample = "abc\n" *
+             "\n" *
+             "a\n" *
+             "b\n" *
+             "c\n" *
+             "\n" *
+             "ab\n" *
+             "ac\n" *
+             "\n" *
+             "a\n" *
+             "a\n" *
+             "a\n" *
+             "a\n" *
+             "\n" *
+             "b\n"
+    @test AdventOfCode2020.Day06.day06(sample) == [11, 6]
+    @test AdventOfCode2020.Day06.day06() == [6775, 3356]
+end
