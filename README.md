@@ -1,3 +1,6 @@
+[![CI](https://github.com/goggle/AdventOfCode2020.jl/workflows/CI/badge.svg)](https://github.com/goggle/AdventOfCode2020.jl/actions?query=workflow%3ACI+branch%3Amaster)
+[![Code coverage](https://codecov.io/gh/goggle/AdventOfCode2020.jl/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/github/goggle/AdventOfCode2020.jl?branch=master)
+
 # AdventOfCode2020.jl
 
 This Julia package contains my solutions for [Advent of Code 2020](https://adventofcode.com/2020/).
