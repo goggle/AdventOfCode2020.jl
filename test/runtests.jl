@@ -136,3 +136,18 @@ end
 
     @test AdventOfCode2020.Day07.day07() == [177, 34988]
 end
+
+@testset "Day 8" begin
+    sample = "nop +0\n" *
+             "acc +1\n" *
+             "jmp +4\n" *
+             "acc +3\n" *
+             "jmp -3\n" *
+             "acc -99\n" *
+             "acc +1\n" *
+             "jmp -4\n" *
+             "acc +6\n"
+    @test AdventOfCode2020.Day08.day08(sample) == [5, 8]
+
+    @test AdventOfCode2020.Day08.day08() == [1816, 1149]
+end
