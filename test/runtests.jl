@@ -151,3 +151,31 @@ end
 
     @test AdventOfCode2020.Day08.day08() == [1816, 1149]
 end
+
+@testset "Day 9" begin
+    sample = "35\n" *
+             "20\n" *
+             "15\n" *
+             "25\n" *
+             "47\n" *
+             "40\n" *
+             "62\n" *
+             "55\n" *
+             "65\n" *
+             "95\n" *
+             "102\n" *
+             "117\n" *
+             "150\n" *
+             "182\n" *
+             "127\n" *
+             "219\n" *
+             "299\n" *
+             "277\n" *
+             "309\n" *
+             "576\n"
+    numbers = parse.(Int, split(strip(sample), "\n"))
+    @test AdventOfCode2020.Day09.part1(numbers, 5) == 127
+    @test AdventOfCode2020.Day09.part2(numbers, 127) == 62
+
+    @test AdventOfCode2020.Day09.day09() == [731031916, 93396727]
+end
