@@ -32,7 +32,7 @@ function part2(numbers, invnumber)
         for j in (i+1):length(numbers)
             s += numbers[j]
             if s == invnumber
-                return minimum(numbers[i:j]) + maximum(numbers[i:j])
+                return sum(extrema(@view numbers[i:j]))
             elseif s > invnumber
                 break
             end
