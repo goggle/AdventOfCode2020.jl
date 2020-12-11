@@ -192,8 +192,7 @@ end
              "6\n" *
              "12\n" *
              "4\n"
-    values1 = parse.(Int, split(sample1))
-    @test AdventOfCode2020.Day10.day10(values1) == [35, 8]
+    @test AdventOfCode2020.Day10.day10(sample1) == [35, 8]
 
     sample2 = "28\n" *
               "33\n" *
@@ -226,8 +225,7 @@ end
               "34\n" *
               "10\n" *
               "3\n"
-    values2 = parse.(Int, split(sample2))
-    @test AdventOfCode2020.Day10.day10(values2) == [220, 19208]
+    @test AdventOfCode2020.Day10.day10(sample2) == [220, 19208]
 
     @test AdventOfCode2020.Day10.day10() == [2432, 453551299002368]
 end
