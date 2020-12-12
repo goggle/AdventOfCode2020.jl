@@ -274,3 +274,15 @@ end
 
     @test AdventOfCode2020.Day11.day11() == [2113, 1865]
 end
+
+@testset "Day 12" begin
+    sample = "F10\n" *
+             "N3\n" *
+             "F7\n" *
+             "R90\n" *
+             "F11\n"
+    @test AdventOfCode2020.Day12.day12(sample)[1] == 25
+    @test AdventOfCode2020.Day12.day12(sample)[2] == 286
+
+    @test AdventOfCode2020.Day12.day12() == [1441, 61616]
+end
