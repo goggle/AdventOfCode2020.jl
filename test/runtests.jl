@@ -229,3 +229,48 @@ end
 
     @test AdventOfCode2020.Day10.day10() == [2432, 453551299002368]
 end
+
+@testset "Day 11" begin
+    sample = "L.LL.LL.LL\n" *
+             "LLLLLLL.LL\n" *
+             "L.L.L..L..\n" *
+             "LLLL.LL.LL\n" *
+             "L.LL.LL.LL\n" *
+             "L.LLLLL.LL\n" *
+             "..L.L.....\n" *
+             "LLLLLLLLLL\n" *
+             "L.LLLLLL.L\n" *
+             "L.LLLLL.LL\n"
+    @test AdventOfCode2020.Day11.day11(sample) == [37, 26]
+
+    sample2 = ".......#.\n" *
+              "...#.....\n" *
+              ".#.......\n" *
+              ".........\n" *
+              "..#L....#\n" *
+              "....#....\n" *
+              ".........\n" *
+              "#........\n" *
+              "...#.....\n"
+    seats2 = reduce(vcat, permutedims.(collect.(split(sample2))))
+    @test AdventOfCode2020.Day11.count_seats_part2(seats2, 5, 4, '#') == 8
+
+    sample3 = ".............\n" *
+              ".L.L.#.#.#.#.\n" *
+              ".............\n"
+    seats3 = reduce(vcat, permutedims.(collect.(split(sample3))))
+    @test AdventOfCode2020.Day11.count_seats_part2(seats3, 2, 2, 'L') == 1
+    @test AdventOfCode2020.Day11.count_seats_part2(seats3, 2, 2, '#') == 0
+
+    sample4 = ".##.##.\n" *
+              "#.#.#.#\n" *
+              "##...##\n" *
+              "...L...\n" *
+              "##...##\n" *
+              "#.#.#.#\n" *
+              ".##.##.\n"
+    seats4 = reduce(vcat, permutedims.(collect.(split(sample4))))
+    @test AdventOfCode2020.Day11.count_seats_part2(seats4, 4, 4, '#') == 0
+
+    @test AdventOfCode2020.Day11.day11() == [2113, 1865]
+end
