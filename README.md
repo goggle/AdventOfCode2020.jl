@@ -19,7 +19,7 @@ This Julia package contains my solutions for [Advent of Code 2020](https://adven
 | 8 | [:white_check_mark:](https://adventofcode.com/2020/day/8) | 19.150 ms | 5.57 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day08/day08.jl) |
 | 9 | [:white_check_mark:](https://adventofcode.com/2020/day/9) | 591.718 μs | 119.36 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day09/day09.jl) |
 | 10 | [:white_check_mark:](https://adventofcode.com/2020/day/10) | 20.432 μs | 17.84 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day10/day10.jl) |
-| 11 | [:white_check_mark:](https://adventofcode.com/2020/day/11) | 368.082 ms | 492.81 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day11/day11.jl) |
+| 11 | [:white_check_mark:](https://adventofcode.com/2020/day/11) | 49.647 ms | 217.98 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day11/day11.jl) |
 
 
 
