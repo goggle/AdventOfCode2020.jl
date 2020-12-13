@@ -292,5 +292,11 @@ end
     @test AdventOfCode2020.Day13.day13(sample)[1] == 295
     @test AdventOfCode2020.Day13.day13(sample)[2] == 1068781
 
+    @test AdventOfCode2020.Day13.day13("111\n17,x,13,19\n")[2] == 3417
+    @test AdventOfCode2020.Day13.day13("111\n67,7,59,61\n")[2] == 754018
+    @test AdventOfCode2020.Day13.day13("111\n67,x,7,59,61\n")[2] == 779210
+    @test AdventOfCode2020.Day13.day13("111\n67,7,x,59,61\n")[2] == 1261476
+    @test AdventOfCode2020.Day13.day13("111\n1789,37,47,1889\n")[2] == 1202161486
+
     @test AdventOfCode2020.Day13.day13() == [8063, 775230782877242]
 end
