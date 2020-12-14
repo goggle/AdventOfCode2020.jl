@@ -17,7 +17,7 @@ end
 
 function part2(ids::Array{Int,1}, pos::Array{Int,1})
     # Use the Chinese Remainder Theorem:
-    P = BigInt(prod(ids))
+    P = convert(Int128, prod(ids))
     return mod(sum(ai * invmod(P ÷ ni, ni) * P ÷ ni for (ni, ai) in zip(ids, -pos)), P)
 end
 
