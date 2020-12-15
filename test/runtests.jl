@@ -300,3 +300,19 @@ end
 
     @test AdventOfCode2020.Day13.day13() == [8063, 775230782877242]
 end
+
+@testset "Day 14" begin
+    sample = "mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X\n" *
+             "mem[8] = 11\n" *
+             "mem[7] = 101\n" *
+             "mem[8] = 0\n"
+    @test AdventOfCode2020.Day14.solve(sample, AdventOfCode2020.Day14.write_to_memory_part1!) == 165
+
+    sample2 = "mask = 000000000000000000000000000000X1001X\n" *
+              "mem[42] = 100\n" *
+              "mask = 00000000000000000000000000000000X0XX\n" *
+              "mem[26] = 1\n"
+    @test AdventOfCode2020.Day14.solve(sample2, AdventOfCode2020.Day14.write_to_memory_part2!) == 208
+
+    @test AdventOfCode2020.Day14.day14() == [6386593869035, 4288986482164]
+end
