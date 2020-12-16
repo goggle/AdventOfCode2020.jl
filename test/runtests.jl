@@ -316,3 +316,15 @@ end
 
     @test AdventOfCode2020.Day14.day14() == [6386593869035, 4288986482164]
 end
+
+@testset "Day 15" begin
+    @test AdventOfCode2020.Day15.solve(parse.(Int, split("0,3,6", ",")), 2020) == 436
+    @test AdventOfCode2020.Day15.solve(parse.(Int, split("1,3,2", ",")), 2020) == 1
+    @test AdventOfCode2020.Day15.solve(parse.(Int, split("2,1,3", ",")), 2020) == 10
+    @test AdventOfCode2020.Day15.solve(parse.(Int, split("1,2,3", ",")), 2020) == 27
+    @test AdventOfCode2020.Day15.solve(parse.(Int, split("2,3,1", ",")), 2020) == 78
+    @test AdventOfCode2020.Day15.solve(parse.(Int, split("3,2,1", ",")), 2020) == 438
+    @test AdventOfCode2020.Day15.solve(parse.(Int, split("3,1,2", ",")), 2020) == 1836
+
+    @test AdventOfCode2020.Day15.day15() == [1522, 18234]
+end
