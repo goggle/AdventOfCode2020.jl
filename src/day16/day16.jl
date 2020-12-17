@@ -3,21 +3,26 @@ module Day16
 using AdventOfCode2020
 
 function day16(input::String = readInput(joinpath(@__DIR__, "input.txt")))
-    restrictions = []
-    names = []
-    for line in split(split(input, "\n\n")[1], "\n")
+    input_sections = split(rstrip(input), "\n\n")
+    nrestrictions = count(c->c=='\n', input_sections[1]) + 1
+    restrictions = Array{Array{UnitRange,1},1}(undef, nrestrictions)
+    names = Array{String,1}(undef, nrestrictions)
+    for (i, line) in enumerate(split(input_sections[1], "\n"))
         m = match(r"(.+?)\s*:\s*(\d+)\s*-\s*(\d+).+?(\d+)\s*-\s*(\d+)", line)
-        push!(restrictions, [parse(Int, m[2]):parse(Int, m[3]), parse(Int, m[4]):parse(Int, m[5])])
-        push!(names, m[1])
+        restrictions[i] = [parse(Int, m[2]):parse(Int, m[3]), parse(Int, m[4]):parse(Int, m[5])]
+        names[i] = m[1]
     end
-    ticket = parse.(Int, split(split(split(input, "\n\n")[2], "\n")[2], ","))
-    nearby_tickets = []
-    for line in split(split(rstrip(input), "\n\n")[3], "\n")[2:end]
-        push!(nearby_tickets, parse.(Int, split(line, ",")))
+
+    ticket = parse.(Int, split(split(input_sections[2], "\n")[2], ","))
+
+    nnt = count(c->c=='\n', input_sections[3])
+    nearby_tickets = fill(zeros(Int, length(ticket)), nnt)
+    for (i, line) in enumerate(split(input_sections[3], "\n")[2:end])
+        nearby_tickets[i] = parse.(Int, split(line, ","))
     end
 
     part1 = 0
-    valid_tickets = []
+    valid_tickets = Array{Array{Int,1},1}()
     for nticket in nearby_tickets
         tok = true
         for n in nticket
@@ -57,9 +62,9 @@ function day16(input::String = readInput(joinpath(@__DIR__, "input.txt")))
         end
     end
 
-    candidates = []
+    candidates = Array{Array{Int,1},1}(undef, size(A)[2])
     for j = 1:size(A)[2]
-        push!(candidates, intersect(A[:,j]...))
+        candidates[j] = intersect(A[:,j]...)
     end
 
 
