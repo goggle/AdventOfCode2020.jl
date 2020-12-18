@@ -2,7 +2,6 @@ module Day17
 
 using AdventOfCode2020
 using OffsetArrays
-using SparseArrays
 
 function day17(input::String = readInput(joinpath(@__DIR__, "input.txt")))
     return [part1(init3d(input)), part2(init4d(input))]
