@@ -344,3 +344,12 @@ end
 
     @test AdventOfCode2020.Day16.day16() == [27802, 279139880759]
 end
+
+@testset "Day 17" begin
+    sample = ".#.\n" *
+             "..#\n" *
+             "###\n"
+    @test AdventOfCode2020.Day17.day17(sample) == [112, 848]
+
+    @test AdventOfCode2020.Day17.day17() == [424, 2460]
+end
