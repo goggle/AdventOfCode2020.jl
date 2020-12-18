@@ -58,13 +58,11 @@ function update3d(A)
     m, n, k = size(A)
     om, on, ok = A.offsets
     B = OffsetArray(zeros(Bool, m + 2, n + 2, k + 2), om:m+om+1, on:n+on+1, ok:k+ok+1)
-    for x = om+2:m+om-1
+    @inbounds for x = om+2:m+om-1
         for y = on+2:n+on-1
             for z = ok+2:k+ok-1
-                c = count(A[x-1:x+1,y-1:y+1,z-1:z+1]) - A[x, y, z]
-                if A[x,y,z] && c in (2,3)
-                    B[x,y,z] = true
-                elseif !A[x,y,z] && c == 3
+                c = count(@view A[x-1:x+1,y-1:y+1,z-1:z+1]) - A[x, y, z]
+                if (A[x,y,z] && c in (2,3)) || (!A[x,y,z] && c == 3)
                     B[x,y,z] = true
                 end
             end
@@ -77,14 +75,12 @@ function update4d(A)
     m, n, k, l = size(A)
     om, on, ok, ol = A.offsets
     B = OffsetArray(zeros(Bool, m + 2, n + 2, k + 2, l + 2), om:m+om+1, on:n+on+1, ok:k+ok+1, ol:l+ol+1)
-    for x = om+2:m+om-1
+    @inbounds for x = om+2:m+om-1
         for y = on+2:n+on-1
             for z = ok+2:k+ok-1
                 for w = ol+2:l+ol-1
-                    c = count(A[x-1:x+1,y-1:y+1,z-1:z+1,w-1:w+1]) - A[x, y, z, w]
-                    if A[x,y,z,w] && c in (2,3)
-                        B[x,y,z,w] = true
-                    elseif !A[x,y,z,w] && c == 3
+                    c = count(@view A[x-1:x+1,y-1:y+1,z-1:z+1,w-1:w+1]) - A[x, y, z, w]
+                    if (A[x,y,z,w] && c in (2,3)) || (!A[x,y,z,w] && c == 3)
                         B[x,y,z,w] = true
                     end
                 end
