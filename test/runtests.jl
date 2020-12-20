@@ -353,3 +353,34 @@ end
 
     @test AdventOfCode2020.Day17.day17() == [424, 2460]
 end
+
+@testset "Day 18" begin
+    sample1 = "1 + 2 * 3 + 4 * 5 + 6"
+    @test AdventOfCode2020.Day18.day18(sample1)[1] == 71
+    @test AdventOfCode2020.Day18.day18(sample1)[2] == 231
+
+    sample2 = "1 + (2 * 3) + (4 * (5 + 6))"
+    @test AdventOfCode2020.Day18.day18(sample2)[1] == 51
+    @test AdventOfCode2020.Day18.day18(sample2)[2] == 51
+
+    sample3 = "2 * 3 + (4 * 5)"
+    @test AdventOfCode2020.Day18.day18(sample3)[1] == 26
+    @test AdventOfCode2020.Day18.day18(sample3)[2] == 46
+
+    sample4 = "5 + (8 * 3 + 9 + 3 * 4 * 3)"
+    @test AdventOfCode2020.Day18.day18(sample4)[1] == 437
+    @test AdventOfCode2020.Day18.day18(sample4)[2] == 1445
+
+    sample5 = "5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))"
+    @test AdventOfCode2020.Day18.day18(sample5)[1] == 12240
+    @test AdventOfCode2020.Day18.day18(sample5)[2] == 669060
+
+    sample6 = "((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2"
+    @test AdventOfCode2020.Day18.day18(sample6)[1] == 13632
+    @test AdventOfCode2020.Day18.day18(sample6)[2] == 23340
+
+    sample7 = "9 + 7 * ((3 * 3) * 2 + 4) + 3"
+    @test AdventOfCode2020.Day18.day18(sample7)[1] == 355
+
+    @test AdventOfCode2020.Day18.day18() == [25190263477788, 297139939002972]
+end
