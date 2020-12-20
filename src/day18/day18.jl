@@ -89,9 +89,7 @@ function evalstack!(stack::Array{Any,1}; plusfirst = false)
             if op == +
                 push!(tmpstack, op(n1, n2))
             else
-                push!(tmpstack, n1)
-                push!(tmpstack, op)
-                push!(tmpstack, n2)
+                push!(tmpstack, n1, op, n2)
             end
         end
         stack = tmpstack
