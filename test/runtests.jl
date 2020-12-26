@@ -549,12 +549,7 @@ end
              "..#.###...\n" *
              "..#.......\n" *
              "..#.###...\n"
+        @test AdventOfCode2020.Day20.day20(sample) == [20899048083289, 273]
+        @test AdventOfCode2020.Day20.day20() == [63187742854073, 2152]
 
-    a = [1, 2, 3, 4]
-    @test AdventOfCode2020.Day20.rot90(a) == [4, 1, 2, 3]
-    @test AdventOfCode2020.Day20.rot180(a) == [3, 4, 1, 2]
-    @test AdventOfCode2020.Day20.rot270(a) == [2, 3, 4, 1]
-    @test AdventOfCode2020.Day20.fliph(a) == [1022, 4, 1020, 2]
-    @test AdventOfCode2020.Day20.flipv(a) == [3, 1021, 1, 1019]
-    @test AdventOfCode2020.Day20.flipb(a) == [1020, 1019, 1022, 1021]
 end
