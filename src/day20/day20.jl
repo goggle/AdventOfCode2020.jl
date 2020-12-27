@@ -54,8 +54,8 @@ end
 rev(n::Int) = digits(n, base = 2, pad = 10) .* (2^i for i = 9:-1:0) |> sum
 rot90(a::Array{Int,1}) = [rev(a[4]), a[1], rev(a[2]), a[3]]
 rot90(a::BitArray{2}) = rotr90(a)
-rot180n(a::Array{Int,1}) = [rev(a[3]), rev(a[4]), rev(a[1]), rev(a[2])]
-rot180n(a::BitArray{2}) = rot180(a)
+rot180(a::Array{Int,1}) = [rev(a[3]), rev(a[4]), rev(a[1]), rev(a[2])]
+rot180(a::BitArray{2}) = Base.rot180(a)
 rot270(a::Array{Int,1}) = [a[2], rev(a[3]), a[4], rev(a[1])]
 rot270(a::BitArray{2}) = rotl90(a)
 
@@ -63,17 +63,17 @@ flipv(a::Array{Int,1}) = [a[3], rev(a[2]), a[1], rev(a[4])]
 flipv(a::BitArray{2}) = reverse(a, dims = 1)
 
 function generate_ops()
-    return (r ∘ f for f in [identity, flipv] for r in [identity, rot90, rot180n, rot270])
+    return (r ∘ f for f in [identity, flipv] for r in [identity, rot90, rot180, rot270])
 end
 
 function get_op(i::Int)
     i == 1 && return identity
     i == 2 && return rot90
-    i == 3 && return rot180n
+    i == 3 && return rot180
     i == 4 && return rot270
     i == 5 && return flipv
     i == 6 && return rot90 ∘ flipv
-    i == 7 && return rot180n ∘ flipv
+    i == 7 && return rot180 ∘ flipv
     i == 8 && return rot270 ∘ flipv
 end
 
