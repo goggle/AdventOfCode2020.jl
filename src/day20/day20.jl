@@ -6,7 +6,7 @@ function day20(input::String = readInput(joinpath(@__DIR__, "input.txt")))
     names, tiles, borders = parse_input(input)
     result = Result(convert(Int, sqrt(length(names))))
     possible_borders = [[op(b) for op in generate_ops()] for b in borders]
-    solve3!(result, 1, collect(1:length(names)), names, tiles, possible_borders)
+    solve!(result, 1, collect(1:length(names)), names, tiles, possible_borders)
     p1 = names[result.img[1,1]] * names[result.img[1,end]] * names[result.img[end,1]] * names[result.img[end,end]]
     return [p1, part2(result)]
 end
@@ -77,7 +77,7 @@ function get_op(i::Int)
     i == 8 && return rot270 ∘ flipv
 end
 
-function solve3!(result::Result, curr::Int, available::Array{Int,1}, names::Array{Int,1}, tiles::Array{BitArray{2},1}, borders::Array{Array{Array{Int,1},1},1})
+function solve!(result::Result, curr::Int, available::Array{Int,1}, names::Array{Int,1}, tiles::Array{BitArray{2},1}, borders::Array{Array{Array{Int,1},1},1})
     curr > length(result) && return true
     for a in available
         bords = borders[a]
@@ -87,7 +87,7 @@ function solve3!(result::Result, curr::Int, available::Array{Int,1}, names::Arra
                 result.ops[curr] = i
                 result.tiles[curr] = get_op(i)(tiles[a])
                 result.borders[curr] = b
-                suc = solve3!(result, curr + 1, filter(x -> x != a, available), names, tiles, borders)
+                suc = solve!(result, curr + 1, filter(x -> x != a, available), names, tiles, borders)
                 suc && return true
             end
         end
