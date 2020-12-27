@@ -14,11 +14,10 @@ end
 struct Result
     n::Int
     img::Array{Int,2}
-    ops::Array{Any,2}
     borders::Array{Array{Int,1},2}
     tiles::Array{BitArray{2},2}
 end
-Result(n::Int) = Result(n, zeros(Int, n, n), zeros(Int, n, n), fill(zeros(Int, 4), n, n), fill(BitArray(zeros(Int, 10, 10)), n, n))
+Result(n::Int) = Result(n, zeros(Int, n, n), fill(zeros(Int, 4), n, n), fill(BitArray(zeros(Int, 10, 10)), n, n))
 Base.length(res::Result) = res.n * res.n
 
 function check_tile(result::Result, border, l)
@@ -84,7 +83,6 @@ function solve!(result::Result, curr::Int, available::Array{Int,1}, names::Array
         for (i, b) in enumerate(bords)
             if check_tile(result, b, curr)
                 result.img[curr] = a
-                result.ops[curr] = i
                 result.tiles[curr] = get_op(i)(tiles[a])
                 result.borders[curr] = b
                 suc = solve!(result, curr + 1, filter(x -> x != a, available), names, tiles, borders)
