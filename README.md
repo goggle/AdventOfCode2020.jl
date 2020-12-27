@@ -27,6 +27,7 @@ This Julia package contains my solutions for [Advent of Code 2020](https://adven
 | 16 | [:white_check_mark:](https://adventofcode.com/2020/day/16) | 11.049 ms | 8.50 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day16/day16.jl) |
 | 17 | [:white_check_mark:](https://adventofcode.com/2020/day/17) | 48.215 ms | 439.09 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day17/day17.jl) |
 | 18 | [:white_check_mark:](https://adventofcode.com/2020/day/18) | 5.157 ms | 3.91 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day18/day18.jl) |
+| 20 | [:white_check_mark:](https://adventofcode.com/2020/day/20) | 145.712 ms | 51.68 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day20/day20.jl) |
 
 
 The benchmarks have been measured on this machine:

@@ -1,18 +1,15 @@
 module Day20
 
-# import Base.rot180
 using AdventOfCode2020
-
 
 function day20(input::String = readInput(joinpath(@__DIR__, "input.txt")))
     names, tiles, borders = parse_input(input)
     result = Result(convert(Int, sqrt(length(names))))
-    possible_borders = [[op(b) for op in AdventOfCode2020.Day20.generate_ops()] for b in borders]
+    possible_borders = [[op(b) for op in generate_ops()] for b in borders]
     solve3!(result, 1, collect(1:length(names)), names, tiles, possible_borders)
     p1 = names[result.img[1,1]] * names[result.img[1,end]] * names[result.img[end,1]] * names[result.img[end,end]]
     return [p1, part2(result)]
 end
-
 
 struct Result
     n::Int
@@ -24,45 +21,10 @@ end
 Result(n::Int) = Result(n, zeros(Int, n, n), zeros(Int, n, n), fill(zeros(Int, 4), n, n), fill(BitArray(zeros(Int, 10, 10)), n, n))
 Base.length(res::Result) = res.n * res.n
 
-function check_tile(result::Result, border, i, j)
-    if i != 1
-        border[1] == result.borders[i-1,j][3] || return false
-    end
-    if j != 1
-        border[4] == result.borders[i,j-1][2] || return false
-    end
-    return true
-end
-
 function check_tile(result::Result, border, l)
     i, j = CartesianIndices(result.img)[l].I
-    if i != 1
-        # border[1] == result.borders[i-1,j][3] || return false
-        if border[1] != result.borders[i-1,j][3]
-            return false
-        end
-    end
-    if j != 1
-       # border[4] == result.borders[i,j-1][2] || return false
-       if border[4] != result.borders[i,j-1][2]
-           return false
-       end
-    end
-    return true
-end
-
-function check_tile2(result::Result, tile, l)
-    i, j = CartesianIndices(result.img)[l].I
-    if i != 1
-        if tile[1,:] != result.tiles[i-1,j][end,:]
-            return false
-        end
-    end
-    if j != 1
-        if tile[:,1] != result.tiles[i,j-1][:,end]
-            return false
-        end
-    end
+    i != 1 && border[1] != result.borders[i-1,j][3] && return false
+    j != 1 && border[4] != result.borders[i,j-1][2] && return false
     return true
 end
 
@@ -89,7 +51,6 @@ function parse_input(input::String)
     return names, tiles, borders
 end
 
-
 rev(n::Int) = digits(n, base = 2, pad = 10) .* (2^i for i = 9:-1:0) |> sum
 rot90(a::Array{Int,1}) = [rev(a[4]), a[1], rev(a[2]), a[3]]
 rot90(a::BitArray{2}) = rotr90(a)
@@ -103,29 +64,6 @@ flipv(a::BitArray{2}) = reverse(a, dims = 1)
 
 function generate_ops()
     return (r ∘ f for f in [identity, flipv] for r in [identity, rot90, rot180n, rot270])
-end
-
-function solve!(result::Result, curr::Int, available::Array{Int,1}, names::Array{Int,1}, tiles::Array{BitArray{2},1}, borders::Array{Array{Int,1},1})#, debug)
-    if curr > length(result)
-        return true
-    end
-    for a in available
-        b = borders[a]
-        for (i, op) in enumerate(generate_ops())
-            nb = op(b)
-            if check_tile(result, nb, curr)
-                result.img[curr] = a
-                result.ops[curr] = i
-                result.tiles[curr] = op(tiles[a])
-                result.borders[curr] = nb
-                suc = solve!(result, curr + 1, filter(x->x!=a, available), names, tiles, borders)#, debug)
-                if suc
-                    return true
-                end
-            end
-        end
-    end
-    return false
 end
 
 function get_op(i::Int)
@@ -151,37 +89,6 @@ function solve3!(result::Result, curr::Int, available::Array{Int,1}, names::Arra
                 result.borders[curr] = b
                 suc = solve3!(result, curr + 1, filter(x -> x != a, available), names, tiles, borders)
                 suc && return true
-            end
-        end
-    end
-    return false
-end
-
-function solve2!(result::Result, curr::Int, available::Array{Int,1}, names::Array{Int,1}, tiles::Array{BitArray{2},1})
-    if curr > length(result)
-        return true
-    end
-    for a in available
-        tile = tiles[a]
-        rftiles = [
-            tile,
-            rotr90(tile),
-            rot180(tile),
-            rotl90(tile),
-            reverse(tile, dims=1),
-            rotr90(reverse(tile, dims=1)),
-            rot180(reverse(tile, dims=1)),
-            rotl90(reverse(tile, dims=1))
-        ]
-        for (i, t) in enumerate(rftiles)
-            if check_tile2(result, t, curr)
-                result.ops[curr] = i
-                result.img[curr] = a
-                result.tiles[curr] = t
-                suc = solve2!(result, curr + 1, filter(x->x!=a, available), names, tiles)
-                if suc
-                    return true
-                end
             end
         end
     end
