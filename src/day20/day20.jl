@@ -6,12 +6,9 @@ using AdventOfCode2020
 
 function day20(input::String = readInput(joinpath(@__DIR__, "input.txt")))
     names, tiles, borders = parse_input(input)
-    # println(names)
-    # println(tiles)
-    # return names, tiles, borders
     result = Result(convert(Int, sqrt(length(names))))
-    # solve2!(result, 1, collect(1:length(names)), names, tiles)
-    solve!(result, 1, collect(1:length(names)), names, tiles, borders)
+    possible_borders = [[op(b) for op in AdventOfCode2020.Day20.generate_ops()] for b in borders]
+    solve3!(result, 1, collect(1:length(names)), names, tiles, possible_borders)
     p1 = names[result.img[1,1]] * names[result.img[1,end]] * names[result.img[end,1]] * names[result.img[end,end]]
     return [p1, part2(result)]
 end
@@ -20,7 +17,7 @@ end
 struct Result
     n::Int
     img::Array{Int,2}
-    ops::Array{Int,2}
+    ops::Array{Any,2}
     borders::Array{Array{Int,1},2}
     tiles::Array{BitArray{2},2}
 end
@@ -94,27 +91,18 @@ end
 
 
 rev(n::Int) = digits(n, base = 2, pad = 10) .* (2^i for i = 9:-1:0) |> sum
-# rot90(a::Array{Int,1}) = [a[4], a[1:3]...]
 rot90(a::Array{Int,1}) = [rev(a[4]), a[1], rev(a[2]), a[3]]
-rot90(a::BitArray{2}) = rotl90(a)
-# rot180(a::Array{Int,1}) = [a[3:4]..., a[1:2]...]
-rot180(a::Array{Int,1}) = [rev(a[3]), rev(a[4]), rev(a[1]), rev(a[2])]
-rot180(a::BitArray{2}) = Base.rot180(a)
-# rot270(a::Array{Int,1}) = [a[2:4]..., a[1]]
+rot90(a::BitArray{2}) = rotr90(a)
+rot180n(a::Array{Int,1}) = [rev(a[3]), rev(a[4]), rev(a[1]), rev(a[2])]
+rot180n(a::BitArray{2}) = rot180(a)
 rot270(a::Array{Int,1}) = [a[2], rev(a[3]), a[4], rev(a[1])]
-rot270(a::BitArray{2}) = rotr90(a)
-fliph(a::Array{Int,1}) = [rev(a[1]), a[4], rev(a[3]), a[2]]
-fliph(a::BitArray{2}) = reverse(a, dims = 1)
-# flipv(a::Array{Int,1}) = [a[3], rev(a[2]), a[1], rev(a[4])]
-# flipb(a::Array{Int,1}) = [rev(a[3]), rev(a[4]), rev(a[1]), rev(a[2])]
-# flip(a::Array{Int,1}) = a[4:-1:1]
+rot270(a::BitArray{2}) = rotl90(a)
+
+flipv(a::Array{Int,1}) = [a[3], rev(a[2]), a[1], rev(a[4])]
+flipv(a::BitArray{2}) = reverse(a, dims = 1)
 
 function generate_ops()
-    # return (r ∘ f for r in [identity, rot90, rot180, rot270] for f in [identity, fliph, flipv, flipb])
-    # return (r ∘ f for r in [identity, rot90, rot180, rot270] for f in [identity, fliph, flipv, fliph ∘ flipv])
-    # return (r ∘ f for r in [identity, rot90, rot180, rot270] for f in [identity, fliph, flipv, flip])
-    # return (f ∘ r for r in [identity, rot90, rot180, rot270] for f in [identity, fliph, flipv, flip])
-    return (r ∘ f for f in [identity, fliph] for r in [identity, rot90, rot180, rot270])
+    return (r ∘ f for f in [identity, flipv] for r in [identity, rot90, rot180n, rot270])
 end
 
 function solve!(result::Result, curr::Int, available::Array{Int,1}, names::Array{Int,1}, tiles::Array{BitArray{2},1}, borders::Array{Array{Int,1},1})#, debug)
@@ -123,17 +111,46 @@ function solve!(result::Result, curr::Int, available::Array{Int,1}, names::Array
     end
     for a in available
         b = borders[a]
-        for op in generate_ops()
+        for (i, op) in enumerate(generate_ops())
             nb = op(b)
             if check_tile(result, nb, curr)
                 result.img[curr] = a
-                # result.ops[curr] = op
+                result.ops[curr] = i
                 result.tiles[curr] = op(tiles[a])
                 result.borders[curr] = nb
                 suc = solve!(result, curr + 1, filter(x->x!=a, available), names, tiles, borders)#, debug)
                 if suc
                     return true
                 end
+            end
+        end
+    end
+    return false
+end
+
+function get_op(i::Int)
+    i == 1 && return identity
+    i == 2 && return rot90
+    i == 3 && return rot180n
+    i == 4 && return rot270
+    i == 5 && return flipv
+    i == 6 && return rot90 ∘ flipv
+    i == 7 && return rot180n ∘ flipv
+    i == 8 && return rot270 ∘ flipv
+end
+
+function solve3!(result::Result, curr::Int, available::Array{Int,1}, names::Array{Int,1}, tiles::Array{BitArray{2},1}, borders::Array{Array{Array{Int,1},1},1})
+    curr > length(result) && return true
+    for a in available
+        bords = borders[a]
+        for (i, b) in enumerate(bords)
+            if check_tile(result, b, curr)
+                result.img[curr] = a
+                result.ops[curr] = i
+                result.tiles[curr] = get_op(i)(tiles[a])
+                result.borders[curr] = b
+                suc = solve3!(result, curr + 1, filter(x -> x != a, available), names, tiles, borders)
+                suc && return true
             end
         end
     end
@@ -148,16 +165,17 @@ function solve2!(result::Result, curr::Int, available::Array{Int,1}, names::Arra
         tile = tiles[a]
         rftiles = [
             tile,
+            rotr90(tile),
+            rot180(tile),
             rotl90(tile),
-            rotl90(rotl90(tile)),
-            rotl90(rotl90(rotl90(tile))),
             reverse(tile, dims=1),
-            rotl90(reverse(tile, dims=1)),
-            rotl90(rotl90(reverse(tile, dims=1))),
-            rotl90(rotl90(rotl90(reverse(tile, dims=1))))
+            rotr90(reverse(tile, dims=1)),
+            rot180(reverse(tile, dims=1)),
+            rotl90(reverse(tile, dims=1))
         ]
-        for t in rftiles
+        for (i, t) in enumerate(rftiles)
             if check_tile2(result, t, curr)
+                result.ops[curr] = i
                 result.img[curr] = a
                 result.tiles[curr] = t
                 suc = solve2!(result, curr + 1, filter(x->x!=a, available), names, tiles)
@@ -189,23 +207,17 @@ function part2(result::Result)
                " #  #  #  #  #  #   "
     origmonster = parse.(Bool, reduce(vcat, permutedims.(replace.(replace.(split.(split(monsters, "\n"), ""), " " => "0"), "#" => "1"))))
     nhashtags = count(origmonster)
-    # println(nhashtags)
     mcount = BitArray(zeros(Bool, m, n))
-    # nmonsters = 0
     for op in generate_ops()
         monster = op(origmonster)
-        # println(monster)
         mm, nm = size(monster)
         for i = 1:m-mm+1
             for j = 1:n-nm+1
                 ma = (image[i:i+mm-1, j:j+nm-1] .== monster .== 1)
-                # println(count(ma))
                 if count(ma) == nhashtags  # monster found
-                    # nmonsters += 1
                     for k = i:i+mm-1
                         for l = j:j+nm-1
                             if image[k,l] == true && monster[k-i+1, l-j+1]
-                                # println("YES")
                                 mcount[k,l] = true
                             end
                         end
@@ -214,8 +226,6 @@ function part2(result::Result)
             end
         end
     end
-    # println("Number of monsters: ", nmonsters)
-    # return mcount
     return count(image) - count(mcount)
 end
 
