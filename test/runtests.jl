@@ -552,3 +552,12 @@ end
         @test AdventOfCode2020.Day20.day20(sample) == [20899048083289, 273]
         @test AdventOfCode2020.Day20.day20() == [63187742854073, 2152]
 end
+
+@testset "Day 21" begin
+    sample = "mxmxvkd kfcds sqjhc nhms (contains dairy, fish)\n" *
+             "trh fvjkl sbzzf mxmxvkd (contains dairy)\n" *
+             "sqjhc fvjkl (contains soy)\n" *
+             "sqjhc mxmxvkd sbzzf (contains fish)\n"
+    @test AdventOfCode2020.Day21.day21(sample) == [5, "mxmxvkd,sqjhc,fvjkl"]
+    @test AdventOfCode2020.Day21.day21() == [2635, "xncgqbcp,frkmp,qhqs,qnhjhn,dhsnxr,rzrktx,ntflq,lgnhmx"]
+end
