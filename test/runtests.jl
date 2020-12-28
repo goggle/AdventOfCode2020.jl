@@ -575,6 +575,6 @@ end
              "4\n" *
              "7\n" *
              "10\n"
-    @test AdventOfCode2020.Day22.day22() == [306, 291]
+    @test AdventOfCode2020.Day22.day22(sample) == [306, 291]
     @test AdventOfCode2020.Day22.day22() == [32272, 33206]
 end
