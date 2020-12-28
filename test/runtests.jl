@@ -561,3 +561,20 @@ end
     @test AdventOfCode2020.Day21.day21(sample) == [5, "mxmxvkd,sqjhc,fvjkl"]
     @test AdventOfCode2020.Day21.day21() == [2635, "xncgqbcp,frkmp,qhqs,qnhjhn,dhsnxr,rzrktx,ntflq,lgnhmx"]
 end
+
+@testset "Day 22" begin
+    sample = "Player 1:\n" *
+             "9\n" *
+             "2\n" *
+             "6\n" *
+             "3\n" *
+             "1\n\n" *
+             "Player 2:\n" *
+             "5\n" *
+             "8\n" *
+             "4\n" *
+             "7\n" *
+             "10\n"
+    @test AdventOfCode2020.Day22.day22() == [306, 291]
+    @test AdventOfCode2020.Day22.day22() == [32272, 33206]
+end
