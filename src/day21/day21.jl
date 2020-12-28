@@ -1,6 +1,7 @@
 module Day21
 
 using AdventOfCode2020
+using OrderedCollections
 
 function day21(input::String = readInput(joinpath(@__DIR__, "input.txt")))
     ingredients, allergens, ingredients_by_line = parse_input(input)
