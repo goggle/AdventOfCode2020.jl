@@ -581,5 +581,6 @@ end
 
 @testset "Day 23" begin
     sample = "389125467"
-    @test AdventOfCode2020.Day23.day23(sample)[1] == 67384529
+    @test AdventOfCode2020.Day23.day23(sample) == [67384529, 149245887792]
+    @test AdventOfCode2020.Day23.day23() == [95648732, 192515314252]
 end
