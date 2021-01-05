@@ -584,3 +584,28 @@ end
     @test AdventOfCode2020.Day23.day23(sample) == [67384529, 149245887792]
     @test AdventOfCode2020.Day23.day23() == [95648732, 192515314252]
 end
+
+@testset "Day 24" begin
+    sample = "sesenwnenenewseeswwswswwnenewsewsw\n" *
+             "neeenesenwnwwswnenewnwwsewnenwseswesw\n" *
+             "seswneswswsenwwnwse\n" *
+             "nwnwneseeswswnenewneswwnewseswneseene\n" *
+             "swweswneswnenwsewnwneneseenw\n" *
+             "eesenwseswswnenwswnwnwsewwnwsene\n" *
+             "sewnenenenesenwsewnenwwwse\n" *
+             "wenwwweseeeweswwwnwwe\n" *
+             "wsweesenenewnwwnwsenewsenwwsesesenwne\n" *
+             "neeswseenwwswnwswswnw\n" *
+             "nenwswwsewswnenenewsenwsenwnesesenew\n" *
+             "enewnwewneswsewnwswenweswnenwsenwsw\n" *
+             "sweneswneswneneenwnewenewwneswswnese\n" *
+             "swwesenesewenwneswnwwneseswwne\n" *
+             "enesenwswwswneneswsenwnewswseenwsese\n" *
+             "wnwnesenesenenwwnenwsewesewsesesew\n" *
+             "nenewswnwewswnenesenwnesewesw\n" *
+             "eneswnwswnwsenenwnwnwwseeswneewsenese\n" *
+             "neswnwewnwnwseenwseesewsenwsweewe\n" *
+             "wseweeenwnesenwwwswnew\n"
+    @test AdventOfCode2020.Day24.day24(sample) == [10, 2208]
+    @test AdventOfCode2020.Day24.day24() == [497, 4156]
+end
