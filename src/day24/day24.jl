@@ -72,7 +72,7 @@ function solve(lines)
         d = d2
     end
     p2 = count(values(d))
-    return p1, p2
+    return [p1, p2]
 end
 
 function neighbour_coordinates(source::Array{Int,1})
