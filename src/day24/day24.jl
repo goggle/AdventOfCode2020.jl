@@ -48,42 +48,56 @@ function solve(lines)
         color = get(d, tile, false)
         d[tile] = !color
     end
-    p1 = count(values(d))
+
+    black_tiles = Set{Array{Int,1}}()
+    for (k, v) in d
+        if v
+            push!(black_tiles, k)
+        end
+    end
+    p1 = length(black_tiles)
 
     for day = 1:100
-        d2 = Dict{Array{Int,1},Bool}()
-        for (k, v) in d
-            neighbours = neighbour_coordinates(k)
-            for coord in [k, neighbours...]
+        remove = Array{Array{Int,1},1}()
+        add = Array{Array{Int,1},1}()
+        for tile in black_tiles
+            neighbours = neighbour_coordinates(tile)
+            for coord in [tile, neighbours...]
                 n2 = neighbour_coordinates(coord)
-                col = get(d, coord, false)
-                c = count(get(d, n, false) for n in n2)
-                if col  # black
-                    if !(c == 0 || c > 2)
-                        d2[coord] = true
+                c = count(neigh ∈ black_tiles for neigh in n2)
+                if coord ∈ black_tiles  # black
+                    if c == 0 || c > 2
+                        push!(remove, coord)
                     end
                 else  # white
                     if c == 2
-                        d2[coord] = true
+                        push!(add, coord)
                     end
                 end
             end
         end
-        d = d2
+
+        # Update black tiles:
+        for coord in remove
+            delete!(black_tiles, coord)
+        end
+        for coord in add
+            push!(black_tiles, coord)
+        end
     end
-    p2 = count(values(d))
-    return [p1, p2]
+
+    return [p1, length(black_tiles)]
 end
 
 function neighbour_coordinates(source::Array{Int,1})
-    return [
+    return (
         source + [1, -1, 0],
         source + [0, -1, 1],
         source + [-1, 0, 1],
         source + [-1, 1, 0],
         source + [0, 1, -1],
         source + [1, 0, -1]
-    ]
+    )
 end
 
 end  # module
