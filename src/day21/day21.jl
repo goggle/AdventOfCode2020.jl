@@ -64,7 +64,7 @@ function solve(ingredients::Dict{String,Int}, allergens::Dict{String,Array{Array
     assigned_ingredients = union(values(assignment)...)
 
     assigned_ingredients_list = [k for (k, v) in ingredients if v ∈ values(assigned_ingredients)]
-    vals = collect(Iterators.flatten(values(sort(assignment))))
+    vals = collect(Iterators.flatten(values(sort!(OrderedDict(assignment)))))
     rev_ingredients = Dict(value => key for (key, value) in ingredients)
     p2list = [rev_ingredients[i] for i in vals]
     return [count(x->x∉assigned_ingredients, Iterators.flatten(ingredients_by_line)), join(p2list, ",")]
