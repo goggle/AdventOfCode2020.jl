@@ -22,7 +22,7 @@ end
 
 function check!(rule::Array{Union{Int,Char},1}, rules::Dict{Int,Union{Array{Array{Int,1},1},Char}}, word::AbstractString)
     length(rule) > length(word) && return false
-    all(typeof.(rule) .<: Char) && join(rule) == word && return true
+    all(typeof.(rule) .== Char) && join(rule) == word && return true
 
     i = 0
     while i + 1 < length(rule)
@@ -33,6 +33,11 @@ function check!(rule::Array{Union{Int,Char},1}, rules::Dict{Int,Union{Array{Arra
         break
     end
     i >= 1 && join(rule[1:i]) != word[1:i] && return false
+
+    if i >= 1
+        rule = rule[i+1:end]
+        word = word[i+1:end]
+    end
 
     newrules = Array{Array{Union{Int,Char},1},1}()
     for (i, r) in enumerate(rule)
