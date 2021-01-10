@@ -4,16 +4,8 @@ using AdventOfCode2020
 
 function day23(input::String = readInput(joinpath(@__DIR__, "input.txt")))
     numbers = parse.(Int, split(rstrip(input), ""))
-    nodes = [Node{Int}(nothing, x) for x in numbers]
-    for (i, node) in enumerate(nodes)
-        node.next = nodes[mod1(i + 1, length(nodes))]
-    end
-    list = LinkedList{Int}(nodes[1])
-
-    current = list.node
     list1 = play(numbers, 100)
     list2 = play(numbers, 10_000_000, extend = true)
-
     return [part1(list1), part2(list2)]
 end
 
@@ -21,9 +13,12 @@ abstract type AbstractLinkedList{T} end
 abstract type AbstractNode{T} end
 
 mutable struct Node{T} <: AbstractNode{T}
-    next::Union{Node{T},Nothing}
+    next::Node{T}
     data::T
+    Node{T}() where T =(x=new(); x.next=x; x)
+    Node{T}(n::Node{T}, d::T) where T =new(n, d)
 end
+Node(n::Node{T}, d::T) where T =SListNode{T}(n, d)
 
 mutable struct LinkedList{T} <: AbstractLinkedList{T}
     node::Node{T}
@@ -35,17 +30,18 @@ function play(numbers::Array{Int,1}, N::Int; extend = false)
         len = 1_000_000
     end
 
-    nodes = [Node{Int}(nothing, x) for x in numbers]
+    nodes = [Node{Int}() for x in numbers]
     nlist = Array{Node{Int},1}(undef, len)
     for (i, node) in enumerate(nodes)
         node.next = nodes[mod1(i + 1, length(nodes))]
+        node.data = numbers[i]
         nlist[node.data] = node
     end
 
     if extend
         node = Node{Int}(nodes[1], 1_000_000)
         nlist[1_000_000] = node
-        for i = 999_999:-1:10
+        @inbounds for i = 999_999:-1:10
             node = Node{Int}(node, i)
             nlist[i] = node
         end
@@ -61,16 +57,7 @@ function play(numbers::Array{Int,1}, N::Int; extend = false)
         destination = current
         while true
             destval = mod1(destval - 1, len)
-            c = current
-            cont = false
-            for i = 1:3
-                c = c.next
-                if c.data == destval
-                    cont = true
-                    break
-                end
-            end
-            if !cont
+            if !(current.next.data == destval || current.next.next.data == destval || current.next.next.next.data == destval)
                 destination = nlist[destval]
                 break
             end
