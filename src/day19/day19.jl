@@ -45,9 +45,11 @@ function check_rec!(rule::Array{Int,1}, rules::Dict{Int,Array{Array{Int,1},1}}, 
         for repl in rules[r]
             push!(newrules, [rule[1:i-1]..., repl..., rule[i+1:end]...])
         end
-        return any(check_rec!(newrule, rules, charints, word) for newrule in newrules)
+        for newrule in newrules
+            check_rec!(newrule, rules, charints, word) && return true
+        end
+        return false
     end
-    return false
 end
 
 function parse_input(input::String)
