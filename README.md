@@ -31,7 +31,7 @@ This Julia package contains my solutions for [Advent of Code 2020](https://adven
 | 20 | [:white_check_mark:](https://adventofcode.com/2020/day/20) | 145.712 ms | 51.68 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day20/day20.jl) |
 | 21 | [:white_check_mark:](https://adventofcode.com/2020/day/21) | 1.845 ms | 2.25 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day21/day21.jl) |
 | 22 | [:white_check_mark:](https://adventofcode.com/2020/day/22) | 286.649 ms | 141.67 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day22/day22.jl) |
-| 23 | [:white_check_mark:](https://adventofcode.com/2020/day/23) | 1.150 s | 38.15 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day23/day23.jl) |
+| 23 | [:white_check_mark:](https://adventofcode.com/2020/day/23) | 209.366 ms | 11.45 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day23/day23.jl) |
 | 24 | [:white_check_mark:](https://adventofcode.com/2020/day/24) | 2.434 s | 1.96 GiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day24/day24.jl) |
 | 25 | [:white_check_mark:](https://adventofcode.com/2020/day/25) | 74.268 ms | 400 bytes | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day25/day25.jl) |
 
