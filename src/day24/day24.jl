@@ -49,22 +49,23 @@ function solve(lines)
         d[tile] = !color
     end
 
-    black_tiles = Set{Array{Int,1}}()
+    black_tiles = Set{Tuple{Int,Int,Int}}()
     for (k, v) in d
         if v
-            push!(black_tiles, k)
+            push!(black_tiles, Tuple(k))
         end
     end
     p1 = length(black_tiles)
 
     for day = 1:100
-        remove = Array{Array{Int,1},1}()
-        add = Array{Array{Int,1},1}()
+        remove = Set{Tuple{Int,Int,Int}}()
+        add = Set{Tuple{Int,Int,Int}}()
+
         for tile in black_tiles
             neighbours = neighbour_coordinates(tile)
             for coord in [tile, neighbours...]
                 n2 = neighbour_coordinates(coord)
-                c = count(neigh ∈ black_tiles for neigh in n2)
+                c = sum(neigh ∈ black_tiles for neigh in n2)
                 if coord ∈ black_tiles  # black
                     if c == 0 || c > 2
                         push!(remove, coord)
@@ -89,14 +90,14 @@ function solve(lines)
     return [p1, length(black_tiles)]
 end
 
-function neighbour_coordinates(source::Array{Int,1})
+function neighbour_coordinates(source::Tuple{Int,Int,Int})
     return (
-        source + [1, -1, 0],
-        source + [0, -1, 1],
-        source + [-1, 0, 1],
-        source + [-1, 1, 0],
-        source + [0, 1, -1],
-        source + [1, 0, -1]
+        source .+ (1, -1, 0),
+        source .+ (0, -1, 1),
+        source .+ (-1, 0, 1),
+        source .+ (-1, 1, 0),
+        source .+ (0, 1, -1),
+        source .+ (1, 0, -1)
     )
 end
 
