@@ -89,4 +89,9 @@ to the `dayXY` method as a string. You can also use the `readInput` method
 to read your input from a text file:
 ```julia
 julia> input = readInput("/path/to/input.txt")
+
+julia> AdventOfCode2020.Day01.day01(input)
+2-element Array{Int64,1}:
+  1007104
+ 18847752
 ```
