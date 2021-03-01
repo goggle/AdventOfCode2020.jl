@@ -9,31 +9,31 @@ This Julia package contains my solutions for [Advent of Code 2020](https://adven
 
 | Day | Problem | Time | Allocated memory | Source |
 |----:|:-------:|-----:|-----------------:|:------:|
-| 1 | [:white_check_mark:](https://adventofcode.com/2020/day/1) | 35.712 μs | 17.25 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day01/day01.jl) |
-| 2 | [:white_check_mark:](https://adventofcode.com/2020/day/2) | 508.126 μs | 454.77 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day02/day02.jl) |
-| 3 | [:white_check_mark:](https://adventofcode.com/2020/day/3) | 120.052 μs | 44.17 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day03/day03.jl) |
-| 4 | [:white_check_mark:](https://adventofcode.com/2020/day/4) | 1.582 ms | 1.45 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day04/day04.jl) |
-| 5 | [:white_check_mark:](https://adventofcode.com/2020/day/5) | 425.170 μs | 85.20 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day05/day05.jl) |
-| 6 | [:white_check_mark:](https://adventofcode.com/2020/day/6) | 2.224 ms | 2.29 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day06/day06.jl) |
-| 7 | [:white_check_mark:](https://adventofcode.com/2020/day/7) | 3.311 ms | 1.86 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day07/day07.jl) |
-| 8 | [:white_check_mark:](https://adventofcode.com/2020/day/8) | 19.150 ms | 5.57 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day08/day08.jl) |
-| 9 | [:white_check_mark:](https://adventofcode.com/2020/day/9) | 591.718 μs | 119.36 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day09/day09.jl) |
-| 10 | [:white_check_mark:](https://adventofcode.com/2020/day/10) | 20.432 μs | 17.84 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day10/day10.jl) |
-| 11 | [:white_check_mark:](https://adventofcode.com/2020/day/11) | 49.647 ms | 217.98 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day11/day11.jl) |$
-| 12 | [:white_check_mark:](https://adventofcode.com/2020/day/12) | 343.275 μs | 488.27 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day12/day12.jl) |
-| 13 | [:white_check_mark:](https://adventofcode.com/2020/day/13) | 32.554 μs | 35.38 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day13/day13.jl) |
-| 14 | [:white_check_mark:](https://adventofcode.com/2020/day/14) | 15.288 ms | 21.10 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day14/day14.jl) |
-| 15 | [:white_check_mark:](https://adventofcode.com/2020/day/15) | 373.204 ms | 114.45 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day15/day15.jl) |
-| 16 | [:white_check_mark:](https://adventofcode.com/2020/day/16) | 11.049 ms | 8.50 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day16/day16.jl) |
-| 17 | [:white_check_mark:](https://adventofcode.com/2020/day/17) | 48.215 ms | 439.09 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day17/day17.jl) |
-| 18 | [:white_check_mark:](https://adventofcode.com/2020/day/18) | 5.157 ms | 3.91 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day18/day18.jl) |
-| 19 | [:white_check_mark:](https://adventofcode.com/2020/day/19) | 132.680 ms | 176.67 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day19/day19.jl) |
-| 20 | [:white_check_mark:](https://adventofcode.com/2020/day/20) | 145.712 ms | 51.68 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day20/day20.jl) |
-| 21 | [:white_check_mark:](https://adventofcode.com/2020/day/21) | 1.845 ms | 2.25 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day21/day21.jl) |
-| 22 | [:white_check_mark:](https://adventofcode.com/2020/day/22) | 286.649 ms | 141.67 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day22/day22.jl) |
-| 23 | [:white_check_mark:](https://adventofcode.com/2020/day/23) | 209.366 ms | 11.45 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day23/day23.jl) |
-| 24 | [:white_check_mark:](https://adventofcode.com/2020/day/24) | 393.255 ms | 71.30 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day24/day24.jl) |
-| 25 | [:white_check_mark:](https://adventofcode.com/2020/day/25) | 74.268 ms | 400 bytes | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day25/day25.jl) |
+| 1 | [:white_check_mark:](https://adventofcode.com/2020/day/1) | 35.712 μs | 17.25 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day01.jl) |
+| 2 | [:white_check_mark:](https://adventofcode.com/2020/day/2) | 508.126 μs | 454.77 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day02.jl) |
+| 3 | [:white_check_mark:](https://adventofcode.com/2020/day/3) | 120.052 μs | 44.17 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day03.jl) |
+| 4 | [:white_check_mark:](https://adventofcode.com/2020/day/4) | 1.582 ms | 1.45 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day04.jl) |
+| 5 | [:white_check_mark:](https://adventofcode.com/2020/day/5) | 425.170 μs | 85.20 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day05.jl) |
+| 6 | [:white_check_mark:](https://adventofcode.com/2020/day/6) | 2.224 ms | 2.29 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day06.jl) |
+| 7 | [:white_check_mark:](https://adventofcode.com/2020/day/7) | 3.311 ms | 1.86 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day07.jl) |
+| 8 | [:white_check_mark:](https://adventofcode.com/2020/day/8) | 19.150 ms | 5.57 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day08.jl) |
+| 9 | [:white_check_mark:](https://adventofcode.com/2020/day/9) | 591.718 μs | 119.36 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day09.jl) |
+| 10 | [:white_check_mark:](https://adventofcode.com/2020/day/10) | 20.432 μs | 17.84 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day10.jl) |
+| 11 | [:white_check_mark:](https://adventofcode.com/2020/day/11) | 49.647 ms | 217.98 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day11.jl) |$
+| 12 | [:white_check_mark:](https://adventofcode.com/2020/day/12) | 343.275 μs | 488.27 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day12.jl) |
+| 13 | [:white_check_mark:](https://adventofcode.com/2020/day/13) | 32.554 μs | 35.38 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day13.jl) |
+| 14 | [:white_check_mark:](https://adventofcode.com/2020/day/14) | 15.288 ms | 21.10 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day14.jl) |
+| 15 | [:white_check_mark:](https://adventofcode.com/2020/day/15) | 373.204 ms | 114.45 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day15.jl) |
+| 16 | [:white_check_mark:](https://adventofcode.com/2020/day/16) | 11.049 ms | 8.50 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day16.jl) |
+| 17 | [:white_check_mark:](https://adventofcode.com/2020/day/17) | 48.215 ms | 439.09 KiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day17.jl) |
+| 18 | [:white_check_mark:](https://adventofcode.com/2020/day/18) | 5.157 ms | 3.91 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day18.jl) |
+| 19 | [:white_check_mark:](https://adventofcode.com/2020/day/19) | 132.680 ms | 176.67 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day19.jl) |
+| 20 | [:white_check_mark:](https://adventofcode.com/2020/day/20) | 145.712 ms | 51.68 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day20.jl) |
+| 21 | [:white_check_mark:](https://adventofcode.com/2020/day/21) | 1.845 ms | 2.25 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day21.jl) |
+| 22 | [:white_check_mark:](https://adventofcode.com/2020/day/22) | 286.649 ms | 141.67 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day22.jl) |
+| 23 | [:white_check_mark:](https://adventofcode.com/2020/day/23) | 209.366 ms | 11.45 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day23.jl) |
+| 24 | [:white_check_mark:](https://adventofcode.com/2020/day/24) | 393.255 ms | 71.30 MiB | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day24.jl) |
+| 25 | [:white_check_mark:](https://adventofcode.com/2020/day/25) | 74.268 ms | 400 bytes | [:white_check_mark:](https://github.com/goggle/AdventOfCode2020.jl/blob/master/src/day25.jl) |
 
 
 The benchmarks have been measured on this machine:
