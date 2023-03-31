@@ -8,7 +8,7 @@ function day24(input::String = readInput(joinpath(@__DIR__, "..", "data", "day24
 end
 
 function solve(lines)
-    # Uses cube corrdinates
+    # Uses cube coordinates
     # Reference: https://www.redblobgames.com/grids/hexagons/
     tiles = Array{Array{Int,1},1}()
     for line in lines
